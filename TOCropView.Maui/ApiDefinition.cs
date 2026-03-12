@@ -428,13 +428,9 @@ namespace Bind_TOCropViewController
         [Export("croppingStyle")]
         TOCropViewCroppingStyle CroppingStyle { get; }
 
-        // @property (assign, nonatomic) TOCropViewControllerAspectRatioPreset aspectRatioPreset;
+        // @property (assign, nonatomic) CGSize aspectRatioPreset;
         [Export("aspectRatioPreset", ArgumentSemantic.Assign)]
-        TOCropViewControllerAspectRatioPreset AspectRatioPreset { get; set; }
-
-        // @property (assign, nonatomic) CGSize customAspectRatio;
-        [Export("customAspectRatio", ArgumentSemantic.Assign)]
-        CGSize CustomAspectRatio { get; set; }
+        CGSize AspectRatioPreset { get; set; }
 
         // @property (readonly, nonatomic) UILabel * _Nullable titleLabel;
         [NullAllowed, Export("titleLabel")]
@@ -517,9 +513,9 @@ namespace Bind_TOCropViewController
         [Export("resetCropViewLayout")]
         void ResetCropViewLayout();
 
-        // -(void)setAspectRatioPreset:(TOCropViewControllerAspectRatioPreset)aspectRatioPreset animated:(BOOL)animated;
+        // -(void)setAspectRatioPreset:(CGSize)aspectRatioPreset animated:(BOOL)animated;
         [Export("setAspectRatioPreset:animated:")]
-        void SetAspectRatioPreset(TOCropViewControllerAspectRatioPreset aspectRatioPreset, bool animated);
+        void SetAspectRatioPreset(CGSize aspectRatioPreset, bool animated);
 
         // -(void)presentAnimatedFromParentViewController:(UIViewController * _Nonnull)viewController fromView:(UIView * _Nullable)fromView fromFrame:(CGRect)fromFrame setup:(void (^ _Nullable)(void))setup completion:(void (^ _Nullable)(void))completion;
         [Export("presentAnimatedFromParentViewController:fromView:fromFrame:setup:completion:")]

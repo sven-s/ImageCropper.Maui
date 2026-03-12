@@ -30,10 +30,9 @@ namespace ImageCropper.Maui
 
             if (imageCropper.AspectRatioX > 0 && imageCropper.AspectRatioY > 0)
             {
-                cropViewController.AspectRatioPreset = TOCropViewControllerAspectRatioPreset.Custom;
+                cropViewController.AspectRatioPreset = new CGSize(imageCropper.AspectRatioX, imageCropper.AspectRatioY);
                 cropViewController.ResetAspectRatioEnabled = false;
                 cropViewController.AspectRatioLockEnabled = true;
-                cropViewController.CustomAspectRatio = new CGSize(imageCropper.AspectRatioX, imageCropper.AspectRatioY);
             }
 
             cropViewController.OnDidCropToRect = (outImage, cropRect, angle) =>
