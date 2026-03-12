@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TOCropView.Maui", "TOCropVi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.Vanniktech.AndroidImageCropper.Maui", "Com.Vanniktech.AndroidImageCropper.Maui\Com.Vanniktech.AndroidImageCropper.Maui.csproj", "{7E3384D6-D0D5-43FB-A635-E0610EE24503}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageCropperDemo", "ImageCropperDemo\ImageCropperDemo.csproj", "{48AA5DB5-C368-47C3-BB81-438905B2F4C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7E3384D6-D0D5-43FB-A635-E0610EE24503}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E3384D6-D0D5-43FB-A635-E0610EE24503}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E3384D6-D0D5-43FB-A635-E0610EE24503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48AA5DB5-C368-47C3-BB81-438905B2F4C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48AA5DB5-C368-47C3-BB81-438905B2F4C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48AA5DB5-C368-47C3-BB81-438905B2F4C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48AA5DB5-C368-47C3-BB81-438905B2F4C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{DD656A7B-EB73-4582-8077-C08994ABA248} = {1F32F736-E6C2-426D-A56D-29BFE6E8B33D}
 		{D824FBE6-BE8C-4BDA-A2FE-DC3D7ABB3E49} = {B3E27B92-728F-4E51-9297-F54AE6F2B41D}
 		{7E3384D6-D0D5-43FB-A635-E0610EE24503} = {B3E27B92-728F-4E51-9297-F54AE6F2B41D}
+		{48AA5DB5-C368-47C3-BB81-438905B2F4C4} = {82207845-0012-43BD-B8C4-0B9FD3B88A5B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F7BCC4B0-F90B-43B2-B5F2-3A653FB1CFA0}
