@@ -6,12 +6,13 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <Title>ImageCropper.Maui.V2</Title>
-        <Copyright>2024</Copyright>
-        <PackageProjectUrl>https://github.com/odapmoa/ImageCropper.Maui</PackageProjectUrl>
+        <Authors>sven-s, odapmoa, jmbowman1107, stormlion227</Authors>
+        <Copyright>2024-2026</Copyright>
+        <PackageProjectUrl>https://github.com/sven-s/ImageCropper.Maui</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageTags>maui;image cropping;image cropper;xamarin;cropper;cropping;image;photo;rotate;safe-area</PackageTags>
+        <PackageTags>maui;image cropping;image cropper;cropper;cropping;image;photo;rotate;ios-fix</PackageTags>
         <Description>.NET MAUI plugin to crop and rotate photos. Fork of jmbowman1107/ImageCropper.Maui (via odapmoa) with fixes for iOS: Safe Area toolbar buttons, rotate and aspect ratio buttons now working. The original NuGet package (ImageCropper.Maui) is unmaintained and broken on iOS.</Description>
-        <RepositoryUrl>https://github.com/odapmoa/ImageCropper.Maui</RepositoryUrl>
+        <RepositoryUrl>https://github.com/sven-s/ImageCropper.Maui</RepositoryUrl>
         <Version>1.2.6</Version>
         <PackageId>ImageCropper.Maui.V2</PackageId>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>

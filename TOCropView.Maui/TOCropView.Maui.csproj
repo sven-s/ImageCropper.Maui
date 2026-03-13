@@ -11,8 +11,9 @@
 		<Version>$(AssemblyVersion)</Version>
 		<Title>TOCropViewController.V2</Title>
 		<PackageId>TOCropView.Maui.V2</PackageId>
-		<RepositoryUrl>https://github.com/odapmoa/ImageCropper.Maui</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/odapmoa/ImageCropper.Maui</PackageProjectUrl>
+		<Authors>sven-s, odapmoa, jmbowman1107, stormlion227</Authors>
+		<RepositoryUrl>https://github.com/sven-s/ImageCropper.Maui</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/sven-s/ImageCropper.Maui</PackageProjectUrl>
 		<Description>.NET MAUI iOS Bindings for TOCropViewController with net9.0 and net10.0 support</Description>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
