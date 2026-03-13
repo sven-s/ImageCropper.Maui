@@ -31,11 +31,11 @@ jobs:
       - name: Install MAUI workload
         run: dotnet workload install maui
 
-      - name: Restore
-        run: dotnet restore ImageCropper.Maui.sln
+      - name: Build
+        run: dotnet build ImageCropper.Maui.sln -c Release
 
       - name: Pack
-        run: dotnet pack ImageCropper.Maui/ImageCropper.Maui.csproj -c Release --no-restore -p:Version=${{ env.VERSION }}
+        run: dotnet pack ImageCropper.Maui/ImageCropper.Maui.csproj -c Release --no-build -p:Version=${{ env.VERSION }}
 
       - name: NuGet login
         uses: NuGet/login@v1
