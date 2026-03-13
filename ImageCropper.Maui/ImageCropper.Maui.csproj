@@ -5,15 +5,15 @@
         <SingleProject>true</SingleProject>
         <ImplicitUsings>enable</ImplicitUsings>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        <Title>ImageCropper.Maui.SafeArea</Title>
+        <Title>ImageCropper.Maui.V2</Title>
         <Copyright>2024</Copyright>
         <PackageProjectUrl>https://github.com/odapmoa/ImageCropper.Maui</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>maui;image cropping;image cropper;xamarin;cropper;cropping;image;photo;rotate;safe-area</PackageTags>
-        <Description>.NET MAUI plugin to crop and rotate photos. Includes iOS Safe Area fix for bottom toolbar buttons.</Description>
+        <Description>.NET MAUI plugin to crop and rotate photos. Fork of jmbowman1107/ImageCropper.Maui (via odapmoa) with fixes for iOS: Safe Area toolbar buttons, rotate and aspect ratio buttons now working. The original NuGet package (ImageCropper.Maui) is unmaintained and broken on iOS.</Description>
         <RepositoryUrl>https://github.com/odapmoa/ImageCropper.Maui</RepositoryUrl>
         <Version>1.2.6</Version>
-        <PackageId>ImageCropper.Maui.SafeArea</PackageId>
+        <PackageId>ImageCropper.Maui.V2</PackageId>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>

@@ -8,8 +8,8 @@
     <AssemblyVersion>4.7.0.1</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <Version>$(AssemblyVersion)</Version>
-    <Title>Com.Vanniktech.AndroidImageCropper.SafeArea</Title>
-    <PackageId>Com.Vanniktech.AndroidImageCropper.Maui.SafeArea</PackageId>
+    <Title>Com.Vanniktech.AndroidImageCropper.V2</Title>
+    <PackageId>Com.Vanniktech.AndroidImageCropper.Maui.V2</PackageId>
     <RepositoryUrl>https://github.com/odapmoa/ImageCropper.Maui</RepositoryUrl>
     <PackageProjectUrl>https://github.com/odapmoa/ImageCropper.Maui</PackageProjectUrl>
     <Description>.NET MAUI and Xamarin Android Bindings for Com.Vanniktech.AndroidImageCropper with net9.0 and net10.0 support</Description>

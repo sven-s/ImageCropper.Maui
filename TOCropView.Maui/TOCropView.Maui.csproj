@@ -9,8 +9,8 @@
 		<AssemblyVersion>2.6.1.9</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
-		<Title>TOCropViewController.SafeArea</Title>
-		<PackageId>TOCropView.Maui.SafeArea</PackageId>
+		<Title>TOCropViewController.V2</Title>
+		<PackageId>TOCropView.Maui.V2</PackageId>
 		<RepositoryUrl>https://github.com/odapmoa/ImageCropper.Maui</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/odapmoa/ImageCropper.Maui</PackageProjectUrl>
 		<Description>.NET MAUI iOS Bindings for TOCropViewController with net9.0 and net10.0 support</Description>
