@@ -1,8 +1,9 @@
 name: Publish to NuGet
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - '*'
   workflow_dispatch:
     inputs:
       version:
@@ -10,7 +11,7 @@ on:
         required: true
 
 env:
-  VERSION: ${{ github.event.release.tag_name || github.event.inputs.version }}
+  VERSION: ${{ github.ref_name || github.event.inputs.version }}
 
 jobs:
   publish:
@@ -32,7 +33,7 @@ jobs:
         run: dotnet workload install maui
 
       - name: Build
-        run: dotnet build ImageCropper.Maui.sln -c Release
+        run: dotnet build ImageCropper.Maui.sln -c Release -p:ValidateXcodeVersion=false
 
       - name: Pack
         run: dotnet pack ImageCropper.Maui/ImageCropper.Maui.csproj -c Release --no-build -p:Version=${{ env.VERSION }}
