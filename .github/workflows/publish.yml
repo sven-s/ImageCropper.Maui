@@ -36,7 +36,10 @@ jobs:
         run: dotnet build ImageCropper.Maui.sln -c Release -p:ValidateXcodeVersion=false
 
       - name: Pack
-        run: dotnet pack ImageCropper.Maui/ImageCropper.Maui.csproj -c Release --no-build -p:Version=${{ env.VERSION }}
+        run: |
+          dotnet pack Com.Vanniktech.AndroidImageCropper.Maui/Com.Vanniktech.AndroidImageCropper.Maui.csproj -c Release --no-build -p:Version=${{ env.VERSION }}
+          dotnet pack TOCropView.Maui/TOCropView.Maui.csproj -c Release --no-build -p:Version=${{ env.VERSION }}
+          dotnet pack ImageCropper.Maui/ImageCropper.Maui.csproj -c Release --no-build -p:Version=${{ env.VERSION }}
 
       - name: NuGet login
         uses: NuGet/login@v1
@@ -46,6 +49,12 @@ jobs:
 
       - name: Push to NuGet
         run: |
+          dotnet nuget push "Com.Vanniktech.AndroidImageCropper.Maui/bin/Release/*.nupkg" \
+            --source https://api.nuget.org/v3/index.json \
+            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+          dotnet nuget push "TOCropView.Maui/bin/Release/*.nupkg" \
+            --source https://api.nuget.org/v3/index.json \
+            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
           dotnet nuget push "ImageCropper.Maui/bin/Release/*.nupkg" \
             --source https://api.nuget.org/v3/index.json \
             --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
