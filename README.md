@@ -1,10 +1,10 @@
-# ImageCropper.Maui
+# ImageCropper.Maui.V2
 
-.NET MAUI plugin to crop and rotate photos. 
+.NET MAUI plugin to crop and rotate photos.
 
-Ported over and updated from from : https://github.com/stormlion227/ImageCropper.Forms
+Fork of [jmbowman1107/ImageCropper.Maui](https://github.com/jmbowman1107/ImageCropper.Maui) (via [odapmoa](https://github.com/odapmoa/ImageCropper.Maui)) with iOS fixes: Safe Area toolbar buttons, rotate and aspect ratio buttons now working. The original NuGet package (`ImageCropper.Maui`) is unmaintained and broken on iOS.
 
-[![NuGet](https://img.shields.io/nuget/v/ImageCropper.Maui.svg)](https://www.nuget.org/packages/ImageCropper.Maui/)
+[![NuGet](https://img.shields.io/nuget/v/ImageCropper.Maui.V2.svg)](https://www.nuget.org/packages/ImageCropper.Maui.V2/)
 
 Supports Android and iOS.
 * Android library from : https://github.com/CanHub/Android-Image-Cropper
@@ -27,7 +27,7 @@ Supports Android and iOS.
 
 ## Setup
 
-* Install the [nuget package](https://www.nuget.org/packages/ImageCropper.Maui/) in portable and all platform specific projects. NOTE: TOCropView.Maui results in long file paths, and if your base repo path is little long, this package cannot be succesfully installed from Visual Studio. To work around this issue install the package using 'dotnet restore' from the CLI.
+* Install the [nuget package](https://www.nuget.org/packages/ImageCropper.Maui.V2/) in portable and all platform specific projects. NOTE: TOCropView.Maui results in long file paths, and if your base repo path is little long, this package cannot be successfully installed from Visual Studio. To work around this issue install the package using 'dotnet restore' from the CLI.
   
 * This plugin uses the **MediaPicker**, so be sure to complete the full setup this. Please fully read through the [MediaPicker description](https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device-media/picker).
 
@@ -49,7 +49,7 @@ In MainActivity.cs file:
             base.OnCreate(savedInstanceState);
         }
     }
-
+```
 
 ### iOS
 
