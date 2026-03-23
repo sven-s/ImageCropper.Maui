@@ -51,10 +51,13 @@ jobs:
         run: |
           dotnet nuget push "Com.Vanniktech.AndroidImageCropper.Maui/bin/Release/*.nupkg" \
             --source https://api.nuget.org/v3/index.json \
-            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" \
+            --skip-duplicate
           dotnet nuget push "TOCropView.Maui/bin/Release/*.nupkg" \
             --source https://api.nuget.org/v3/index.json \
-            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" \
+            --skip-duplicate
           dotnet nuget push "ImageCropper.Maui/bin/Release/*.nupkg" \
             --source https://api.nuget.org/v3/index.json \
-            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" \
+            --skip-duplicate
