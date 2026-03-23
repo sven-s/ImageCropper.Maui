@@ -33,10 +33,15 @@ Supports Android and iOS.
 
 ### Android
 
-Add the following to your AndroidManifest.xml inside the <application> tags:
-```xml	
-	<activity android:name="com.canhub.cropper.CropImageActivity"
-	          android:theme="@style/Base.Theme.AppCompat"/>	
+Add the following to your AndroidManifest.xml:
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<application android:allowBackup="true" android:supportsRtl="true">
+		<activity android:name="com.canhub.cropper.CropImageActivity"
+		          android:theme="@style/Base.Theme.AppCompat" />
+	</application>
+	<uses-permission android:name="android.permission.CAMERA" />
+</manifest>
 ```
 
 In MainActivity.cs file:
@@ -85,6 +90,7 @@ In AppDelegate.cs file:
 	TakePhotoTitle = "Take Photo",
 	PhotoLibraryTitle = "Photo Library",
 	CancelButtonTitle = "Cancel",
+	InitialCropWindowPaddingRatio = 0.15f, // Android only: adds margin around the crop rectangle
         Success = (imageFile) =>
         {
             Dispatcher.Dispatch(() =>
@@ -108,10 +114,10 @@ In AppDelegate.cs file:
     }.Show(this, imageFileName);
 ```
 ### Properties
-* PageTitle
-* AspectRatioX
-* AspectRatioY
-* CropShape
+* **PageTitle** — title displayed on the crop page
+* **AspectRatioX** / **AspectRatioY** — fixed aspect ratio (0 = free)
+* **CropShape** — `Rectangle` or `Oval`
+* **InitialCropWindowPaddingRatio** — *(Android only)* padding ratio (0.0–0.5) around the initial crop rectangle. Default `0.1`. Increase this if the crop handles extend beyond the touchable screen area on some devices.
 * Initial image can be set in Show function.
 
 ## Contributions

@@ -37,6 +37,8 @@ namespace ImageCropper.Maui
                     cropImageOptions.FixAspectRatio = false;
                 }
 
+                cropImageOptions.InitialCropWindowPaddingRatio = imageCropper.InitialCropWindowPaddingRatio;
+
                 if (!string.IsNullOrWhiteSpace(imageCropper.PageTitle))
                 {
                     cropImageOptions.ActivityTitle = new Java.Lang.String(imageCropper.PageTitle);

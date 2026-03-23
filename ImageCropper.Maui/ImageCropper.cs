@@ -36,6 +36,12 @@
         /// </summary>
         public string CropButtonTitle { get; set; } = "Crop";
 
+        /// <summary>
+        /// Padding ratio around the initial crop window (0.0 - 0.5). Higher values add more margin.
+        /// Default is 0.1. Increase if the crop rectangle extends beyond the touchable area on some devices.
+        /// </summary>
+        public float InitialCropWindowPaddingRatio { get; set; } = 0.1f;
+
         public Action<string> Success { get; set; }
 
         public Action Failure { get; set; }
