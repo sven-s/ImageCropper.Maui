@@ -1,10 +1,9 @@
-﻿namespace ImageCropper.Maui
+﻿namespace ImageCropper.Maui;
+
+public class Platform
 {
-    public class Platform
+    public void Init()
     {
-        public void Init()
-        {
-            DependencyService.Register<IImageCropperWrapper, PlatformImageCropper>();
-        }
+        DependencyService.Register<IImageCropperWrapper, PlatformImageCropper>();
     }
 }
