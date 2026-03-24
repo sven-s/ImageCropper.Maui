@@ -85,12 +85,12 @@ In AppDelegate.cs file:
         PageTitle = "Test Title",
         AspectRatioX = 1,
         AspectRatioY = 1,
-	CropShape = ImageCropper.CropShapeType.Oval,
-	SelectSourceTitle = "Select source",
-	TakePhotoTitle = "Take Photo",
-	PhotoLibraryTitle = "Photo Library",
-	CancelButtonTitle = "Cancel",
-	InitialCropWindowPaddingRatio = 0.15f, // Android only: adds margin around the crop rectangle
+	    CropShape = ImageCropper.CropShapeType.Oval,
+	    SelectSourceTitle = "Select source",
+	    TakePhotoTitle = "Take Photo",
+        PhotoLibraryTitle = "Photo Library",
+	    CancelButtonTitle = "Cancel",
+	    InitialCropWindowPaddingRatio = 0.15f, // Android only: adds margin around the crop rectangle
         Success = (imageFile) =>
         {
             Dispatcher.Dispatch(() =>
@@ -100,7 +100,7 @@ In AppDelegate.cs file:
         }
     }.Show(this);
 ```
-### Show it with a image
+### Show it with an image
 ```cs
     new ImageCropper()
     {
@@ -118,7 +118,20 @@ In AppDelegate.cs file:
 * **AspectRatioX** / **AspectRatioY** — fixed aspect ratio (0 = free)
 * **CropShape** — `Rectangle` or `Oval`
 * **InitialCropWindowPaddingRatio** — *(Android only)* padding ratio (0.0–0.5) around the initial crop rectangle. Default `0.1`. Increase this if the crop handles extend beyond the touchable screen area on some devices.
+* **Logger** — optional `ILogger` instance for error logging. Integrates with any standard .NET logging provider (Sentry, Application Insights, etc.).
 * Initial image can be set in Show function.
+
+### Logging
+Pass an `ILogger` to get visibility into crop failures:
+```cs
+    new ImageCropper()
+    {
+        Logger = loggerFactory.CreateLogger<ImageCropper>(),
+        Success = (imageFile) => { ... },
+        Failure = () => { ... }
+    }.Show(this);
+```
+Without a logger set, errors are silently ignored (backwards compatible).
 
 ## Contributions
 Contributions are welcome!
