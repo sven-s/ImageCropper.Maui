@@ -11,6 +11,8 @@ public class PlatformImageCropper : IImageCropperWrapper
 {
     public void ShowFromFile(ImageCropper imageCropper, string imageFile)
     {
+        imageCropper.Logger?.LogInformation("Launching crop view for {ImageFile}", imageFile);
+
         UIImage image = UIImage.FromFile(imageFile);
 
         TOCropViewController cropViewController;
@@ -74,6 +76,7 @@ public class PlatformImageCropper : IImageCropperWrapper
         await System.Threading.Tasks.Task.Delay(TimeSpan.FromMilliseconds(100));
         if (imgData.Save(jpgFilename, false, out err))
         {
+            imageCropper.Logger?.LogInformation("Crop completed, output at {Path}", jpgFilename);
             imageCropper.Success?.Invoke(jpgFilename);
         }
         else

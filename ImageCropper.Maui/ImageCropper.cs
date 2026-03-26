@@ -5,7 +5,7 @@ namespace ImageCropper.Maui;
 public class ImageCropper
 {
     /// <summary>
-    /// Optional logger. When set, errors are logged via ILogger (picked up by Sentry, etc.).
+    /// Logger instance. Auto-resolved from MAUI's DI container; can be overridden manually.
     /// </summary>
     public ILogger Logger { get; set; }
 
@@ -14,6 +14,20 @@ public class ImageCropper
     public ImageCropper()
     {
         Current = this;
+        Logger = ResolveLogger();
+    }
+
+    private static ILogger ResolveLogger()
+    {
+        try
+        {
+            var factory = IPlatformApplication.Current?.Services.GetService<ILoggerFactory>();
+            return factory?.CreateLogger<ImageCropper>();
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     public enum CropShapeType
@@ -53,30 +67,36 @@ public class ImageCropper
 
     public Action Failure { get; set; }
 
-    public MediaPickerOptions MediaPickerOptions { get; set; } = new MediaPickerOptions();
+    public MediaPickerOptions MediaPickerOptions { get; set; } = new();
 
-    public async void Show(Page page, string imageFile = null)
+    public async Task Show(Page page, string imageFile = null)
     {
         if (imageFile == null)
         {
             FileResult file = null;
             string newFile = null;
 
-            string action = await page.DisplayActionSheet(SelectSourceTitle, CancelButtonTitle, null,
+            var action = await page.DisplayActionSheetAsync(SelectSourceTitle, CancelButtonTitle, null,
                 TakePhotoTitle, PhotoLibraryTitle);
             try
             {
                 if (action == TakePhotoTitle)
                 {
-                    file = await MediaPicker.CapturePhotoAsync(MediaPickerOptions);
+                    file = await MediaPicker.Default.CapturePhotoAsync(MediaPickerOptions).ConfigureAwait(false);
                 }
                 else if (action == PhotoLibraryTitle)
                 {
-                    file = await MediaPicker.PickPhotoAsync(MediaPickerOptions);
+                    var pickResult = await FilePicker.PickAsync(new PickOptions
+                    {
+                        PickerTitle = PhotoLibraryTitle,
+                        FileTypes = FilePickerFileType.Images
+                    }).ConfigureAwait(false);
+                    if (pickResult != null)
+                        file = new FileResult(pickResult.FullPath);
                 }
                 else
                 {
-                    Failure?.Invoke();
+                    MainThread.BeginInvokeOnMainThread(() => Failure?.Invoke());
                     return;
                 }
 
@@ -92,13 +112,11 @@ public class ImageCropper
                     }
 
                     //Copiarlo llevaba mucho trabajo
-                    using (var stream = await file.OpenReadAsync())
-                    using (var newStream = File.OpenWrite(newFile))
-                    {
-                        await stream.CopyToAsync(newStream);
-                        stream.Close();
-                        newStream.Close();
-                    }
+                    await using var stream = await file.OpenReadAsync().ConfigureAwait(false);
+                    await using var newStream = File.OpenWrite(newFile);
+                    await stream.CopyToAsync(newStream).ConfigureAwait(false);
+                    stream.Close();
+                    newStream.Close();
                 }
             }
             catch (Exception ex)
@@ -114,9 +132,17 @@ public class ImageCropper
 
             imageFile = newFile;
         }
+        else
+        {
+            // Copy the provided file to cache so the cropper doesn't need write access to the original
+            var cachedFile = Path.Combine(FileSystem.CacheDirectory, $"crop_input_{Guid.NewGuid()}{Path.GetExtension(imageFile)}");
+            File.Copy(imageFile, cachedFile, true);
+            imageFile = cachedFile;
+        }
 
         // small delay
-        await Task.Delay(TimeSpan.FromMilliseconds(100));
-        DependencyService.Get<IImageCropperWrapper>().ShowFromFile(this, imageFile);
+        await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(false);
+        MainThread.BeginInvokeOnMainThread(() =>
+            DependencyService.Get<IImageCropperWrapper>().ShowFromFile(this, imageFile));
     }
 }

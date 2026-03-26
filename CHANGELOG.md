@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.4.0
+
+### Added
+- ILogger auto-resolves from MAUI's DI container — no manual setup needed
+- Info logging when crop activity is launched and when crop completes (both platforms)
+- Android: theme-aware toolbar colors — adapts to light/dark mode for readable status bar
+- Android: circular mask applied to oval crop output (CanHub only outputs rectangles natively)
+- Android: oval crop now forces 1:1 aspect ratio to ensure a circle, not an ellipse
+
+### Fixed
+- Android: replaced `MediaPicker.PickPhotoAsync` with `FilePicker` to fix `ActivityResultLauncher` registration crash on Android 13+
+- Input files passed to `Show()` are now copied to cache before cropping, preventing file lock issues
+
+### Changed
+- `Show()` return type changed from `async void` to `async Task`
+- Demo app updated to use DI for `ILogger` and `MainPage`
+
 ## 1.3.2.0
 
 ### Added

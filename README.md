@@ -118,20 +118,21 @@ In AppDelegate.cs file:
 * **AspectRatioX** / **AspectRatioY** — fixed aspect ratio (0 = free)
 * **CropShape** — `Rectangle` or `Oval`
 * **InitialCropWindowPaddingRatio** — *(Android only)* padding ratio (0.0–0.5) around the initial crop rectangle. Default `0.1`. Increase this if the crop handles extend beyond the touchable screen area on some devices.
-* **Logger** — optional `ILogger` instance for error logging. Integrates with any standard .NET logging provider (Sentry, Application Insights, etc.).
+* **Logger** — `ILogger` instance for error logging. Auto-resolved from MAUI's DI container; can be overridden manually. Integrates with any standard .NET logging provider (Sentry, Application Insights, etc.).
 * Initial image can be set in Show function.
 
 ### Logging
-Pass an `ILogger` to get visibility into crop failures:
+Logging works automatically — `ImageCropper` resolves an `ILogger` from MAUI's DI container. No setup needed if you're using the default MAUI logging configuration.
+
+To override with a custom logger:
 ```cs
     new ImageCropper()
     {
-        Logger = loggerFactory.CreateLogger<ImageCropper>(),
+        Logger = myCustomLogger,
         Success = (imageFile) => { ... },
         Failure = () => { ... }
     }.Show(this);
 ```
-Without a logger set, errors are silently ignored (backwards compatible).
 
 ## Contributions
 Contributions are welcome!

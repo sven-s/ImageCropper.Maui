@@ -1,4 +1,6 @@
-﻿namespace ImageCropperDemo
+﻿using Microsoft.Extensions.Logging;
+
+namespace ImageCropperDemo
 {
     public static class MauiProgram
     {
@@ -12,6 +14,9 @@
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Logging.SetMinimumLevel(LogLevel.Debug);
+            builder.Services.AddTransient<MainPage>();
 
             return builder.Build();
         }
