@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "server",
+  "dolt_database": "ImageCropper.Maui",
+  "project_id": "3536d4c5-af55-48f8-b212-ad27937524fa"
+}
