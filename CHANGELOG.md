@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.1
+
+### Fixed
+- Android: use correct `CropImageView.CropResult` type in result handler
+
 ## 1.4.0
 
 ### Added
