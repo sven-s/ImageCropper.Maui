@@ -26,7 +26,7 @@ public class Platform : Fragment, IActivityResultCallback
 
         try
         {
-            if (cropImageResult is not CropImage.ActivityResult result)
+            if (cropImageResult is not CropImageView.CropResult result)
             {
                 logger?.LogWarning("Crop activity returned unexpected result type: {Type}",
                     cropImageResult?.GetType().Name);
